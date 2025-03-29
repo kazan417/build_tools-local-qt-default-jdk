@@ -31,7 +31,7 @@ def install_qt():
                "-shared",
                "-accessibility",
                "-prefix",
-               "./../qt_build/Qt-5.9.9/gcc_64",
+                "./../system_qt/gcc_64",
                "-qt-zlib",
                "-qt-libpng",
                "-qt-libjpeg",
@@ -108,7 +108,7 @@ print("---------------------------------------------")
 build_tools_params = ["--branch", branch, 
                       "--module", modules, 
                       "--update", "1",
-                      "--qt-dir", os.getcwd() + "/qt_build/Qt-5.9.9"] + params
+                      "--qt-dir", os.getcwd() + "/system_qt"] + params
 
 base.cmd_in_dir("../..", "./configure.py", build_tools_params)
 base.cmd_in_dir("../..", "./make.py")
