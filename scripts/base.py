@@ -572,7 +572,7 @@ def git_update(repo, is_no_errors=False, is_current_dir=False, git_owner=""):
 
 def get_repositories():
   result = {}
-  result["core"] = [False, False,""]
+  result["core"] = [False, False,"kazan417"]
   result["sdkjs"] = [False, False,""]
   result.update(get_sdkjs_addons())
   result["onlyoffice.github.io"] = [False, False,""]
