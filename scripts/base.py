@@ -1026,12 +1026,12 @@ def get_sdkjs_addons():
     return result
   addons_list = config.option("sdkjs-addons").rsplit(", ")
   for name in addons_list:
-    result[name] = [True, False]
+    result[name] = [True, False,""]
 
   if ("" != config.option("sdkjs-addons-desktop")):
     addons_list = config.option("sdkjs-addons-desktop").rsplit(", ")
     for name in addons_list:
-      result[name] = [True, False]
+      result[name] = [True, False,""]
   return result
 
 def get_server_addons():
@@ -1040,7 +1040,7 @@ def get_server_addons():
     return result
   addons_list = config.option("server-addons").rsplit(", ")
   for name in addons_list:
-    result[name] = [True, False]
+    result[name] = [True, False,""]
   return result
 
 def get_web_apps_addons():
@@ -1049,7 +1049,7 @@ def get_web_apps_addons():
     return result
   addons_list = config.option("web-apps-addons").rsplit(", ")
   for name in addons_list:
-    result[name] = [True, False]
+    result[name] = [True, False,""]
   return result
 
 def sdkjs_addons_param():
