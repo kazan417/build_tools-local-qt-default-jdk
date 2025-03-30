@@ -572,30 +572,30 @@ def git_update(repo, is_no_errors=False, is_current_dir=False, git_owner=""):
 
 def get_repositories():
   result = {}
-  result["core"] = [False, False]
-  result["sdkjs"] = [False, False]
+  result["core"] = [False, False,""]
+  result["sdkjs"] = [False, False,""]
   result.update(get_sdkjs_addons())
-  result["onlyoffice.github.io"] = [False, False]
-  result["web-apps"] = [False, False]
-  result["dictionaries"] = [False, False]
-  result["core-fonts"] = [False, False]
+  result["onlyoffice.github.io"] = [False, False,""]
+  result["web-apps"] = [False, False,""]
+  result["dictionaries"] = [False, False,""]
+  result["core-fonts"] = [False, False,""]
 
   if config.check_option("module", "server"):
     result.update(get_web_apps_addons())
 
   if config.check_option("module", "builder"):
-    result["document-templates"] = [False, False]
+    result["document-templates"] = [False, False,""]
 
   if config.check_option("module", "desktop"):
-    result["desktop-sdk"] = [False, False]
-    result["desktop-apps"] = [False, False]
-    result["document-templates"] = [False, False]
+    result["desktop-sdk"] = [False, False,""]
+    result["desktop-apps"] = [False, False,""]
+    result["document-templates"] = [False, False,""]
 
   if (config.check_option("module", "server")):
-    result["server"] = [False, False]
+    result["server"] = [False, False,""]
     result.update(get_server_addons())
-    result["document-server-integration"] = [False, False]
-    result["document-templates"] = [False, False]
+    result["document-server-integration"] = [False, False,""]
+    result["document-templates"] = [False, False,""]
 
   get_branding_repositories(result)
   return result
@@ -650,7 +650,7 @@ def update_repositories(repositories):
     value = repositories[repo]
     current_dir = value[1]
     if current_dir == False:
-      git_update(repo, value[0], False)
+      git_update(repo, value[0], False, value[2])
     else:
       if is_dir(current_dir + "/.git"):
         delete_dir_with_access_error(current_dir);
@@ -659,7 +659,7 @@ def update_repositories(repositories):
         create_dir(current_dir)
       cur_dir = os.getcwd()
       os.chdir(current_dir)
-      git_update(repo, value[0], True)
+      git_update(repo, value[0], True, value[2])
       os.chdir(cur_dir)
 
 def git_dir():
